@@ -14,12 +14,17 @@ env:
   ANDROID_SDK_VERSION: 36
   GRADLE_VERSION: 8.13
   TERMUX_PACKAGE_VARIANT: apt-android-7
+  TERMUX_SPLIT_APKS_FOR_RELEASE_BUILDS: "1"
 
 jobs:
   build:
     name: Build Android APK
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        package_variant: [ apt-android-7, apt-android-5 ]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -57,18 +62,25 @@ jobs:
 
       - name: Download Termux bootstrap packages
         run: ./gradlew downloadBootstraps --no-daemon -q
+        env:
+          TERMUX_PACKAGE_VARIANT: ${{ matrix.package_variant }}
 
       - name: Build Debug APK
         run: ./gradlew :app:assembleDebug --no-daemon -q
+        env:
+          TERMUX_PACKAGE_VARIANT: ${{ matrix.package_variant }}
 
       - name: Build Release APK (on tags only)
         if: startsWith(github.ref, 'refs/tags/')
         run: ./gradlew :app:assembleRelease --no-daemon -q
+        env:
+          TERMUX_PACKAGE_VARIANT: ${{ matrix.package_variant }}
+          TERMUX_SPLIT_APKS_FOR_RELEASE_BUILDS: "1"
 
       - name: Upload Debug APKs as Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: termux-debug-apks
+          name: termux-debug-apks-${{ matrix.package_variant }}
           path: app/build/outputs/apk/debug/*.apk
           retention-days: 30
 
@@ -76,12 +88,12 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         uses: actions/upload-artifact@v4
         with:
-          name: termux-release-apks
+          name: termux-release-apks-${{ matrix.package_variant }}
           path: app/build/outputs/apk/release/*.apk
           retention-days: 30
 
       - name: Create Release
-        if: startsWith(github.ref, 'refs/tags/')
+        if: startsWith(github.ref, 'refs/tags/') && matrix.package_variant == 'apt-android-7'
         uses: softprops/action-gh-release@v2
         with:
           files: app/build/outputs/apk/release/*.apk
