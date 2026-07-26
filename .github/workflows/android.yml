@@ -36,13 +36,6 @@ jobs:
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
-        with:
-          packages: |
-            platforms;android-36
-            build-tools;35.0.0
-            ndk;26.1.10909125
-            cmake;3.22.1
-            platform-tools
 
       - name: Install additional SDK packages
         run: |
@@ -135,10 +128,6 @@ jobs:
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
-        with:
-          packages: |
-            platforms;android-36
-            build-tools;35.0.0
 
       - name: Install additional SDK packages
         run: |
