@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termux + SSH Terminal - Download</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #0d1117;
+            color: #e6edf3;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #58a6ff, #a371f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .subtitle {
+            color: #8b949e;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .feature {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 1.25rem;
+        }
+        .feature h3 {
+            color: #58a6ff;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+        .feature p {
+            color: #8b949e;
+            font-size: 0.9rem;
+        }
+        .download-section {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 2rem;
+        }
+        .download-section h2 {
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        .apk-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        .apk-card {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 1.25rem;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+        .apk-card:hover {
+            border-color: #58a6ff;
+            transform: translateY(-2px);
+        }
+        .apk-card.recommended {
+            border-color: #a371f7;
+        }
+        .apk-card.recommended::before {
+            content: "✓ Recommended";
+            display: inline-block;
+            background: #a371f7;
+            color: #0d1117;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+        }
+        .apk-arch {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #e6edf3;
+            margin-bottom: 0.25rem;
+        }
+        .apk-size {
+            color: #8b949e;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+        .download-btn {
+            display: inline-block;
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: #238636;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            text-align: center;
+            transition: background 0.2s;
+        }
+        .download-btn:hover {
+            background: #2ea043;
+        }
+        .footer {
+            margin-top: 2rem;
+            text-align: center;
+            color: #6e7681;
+            font-size: 0.85rem;
+        }
+        .footer a {
+            color: #58a6ff;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .download-section { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Termux + SSH Terminal</h1>
+        <p class="subtitle">Full Linux environment on Android with built-in SSH client, SFTP, and AI copilot</p>
+        
+        <div class="features">
+            <div class="feature">
+                <h3>🔐 SSH Terminal</h3>
+                <p>Multi-session tabs, auto-reconnect, Cloudflare tunnels, proxy support</p>
+            </div>
+            <div class="feature">
+                <h3>📁 SFTP File Manager</h3>
+                <p>Browse, upload, download, create folders, delete remote files</p>
+            </div>
+            <div class="feature">
+                <h3>⌨️ Custom Keyboard</h3>
+                <p>Ctrl/Alt/Shift modifiers, arrow keys, symbols, macros, paste</p>
+            </div>
+            <div class="feature">
+                <h3>🤖 AI Copilot</h3>
+                <p>Gemini 3.5 Flash analyzes output, suggests & runs commands</p>
+            </div>
+            <div class="feature">
+                <h3>📦 Full Linux</h3>
+                <p>APT package manager, Python, Node, Git, Docker, htop, etc.</p>
+            </div>
+            <div class="feature">
+                <h3>💾 Backup & Restore</h3>
+                <p>Export/import servers, keys, history to JSON files</p>
+            </div>
+        </div>
+
+        <div class="download-section">
+            <h2>📥 Download APK</h2>
+            <p style="color: #8b949e; margin-bottom: 1.5rem;">Choose the APK matching your device architecture. <strong>arm64-v8a</strong> works for most modern Android devices.</p>
+            <div class="apk-grid">
+                <a href="termux-app_apt-android-7-debug_arm64-v8a.apk" class="apk-card recommended" download>
+                    <div class="apk-arch">arm64-v8a</div>
+                    <div class="apk-size">55 MB</div>
+                    <span class="download-btn">Download</span>
+                </a>
+                <a href="termux-app_apt-android-7-debug_armeabi-v7a.apk" class="apk-card" download>
+                    <div class="apk-arch">armeabi-v7a</div>
+                    <div class="apk-size">52 MB</div>
+                    <span class="download-btn">Download</span>
+                </a>
+                <a href="termux-app_apt-android-7-debug_x86_64.apk" class="apk-card" download>
+                    <div class="apk-arch">x86_64</div>
+                    <div class="apk-size">55 MB</div>
+                    <span class="download-btn">Download</span>
+                </a>
+                <a href="termux-app_apt-android-7-debug_x86.apk" class="apk-card" download>
+                    <div class="apk-arch">x86</div>
+                    <div class="apk-size">54 MB</div>
+                    <span class="download-btn">Download</span>
+                </a>
+                <a href="termux-app_apt-android-7-debug_universal.apk" class="apk-card" download>
+                    <div class="apk-size">142 MB</div>
+                    <span class="download-btn">Download</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer">
+            Built from <a href="https://github.com/asmodeus-games/termux-app/tree/ssh-integration" target="_blank">asmodeus-games/termux-app (ssh-integration branch)</a> |
+            Based on <a href="https://github.com/termux/termux-app" target="_blank">termux/termux-app</a>
+        </div>
+    </div>
+</body>
+</html>
