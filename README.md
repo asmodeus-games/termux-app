@@ -88,6 +88,13 @@ The APKs for both of these are [`debuggable`](https://developer.android.com/stud
 
 Both universal and architecture specific APKs are released. The APK and bootstrap installation size will be `~180MB` if using universal and `~120MB` if using architecture specific. Check [here](https://github.com/termux/termux-app/issues/2153) for details.
 
+### SSH Terminal Edition (Custom Build)
+
+A custom build with integrated SSH terminal features is available at:
+- **Download Page:** https://asmodeus-games.github.io/termux-app/
+- **Source Branch:** [`ssh-integration`](https://github.com/asmodeus-games/termux-app/tree/ssh-integration)
+- **Features:** Multi-session SSH terminal, SFTP file manager, Cloudflare tunnels, custom programmer keyboard, AI copilot, command autocomplete, zoom controls, backup/restore
+
 **Security warning**: APK files on GitHub are signed with a test key that has been [shared with community](https://github.com/termux/termux-app/blob/master/app/testkey_untrusted.jks). This IS NOT an official developer key and everyone can use it to generate releases for own testing. Be very careful when using Termux GitHub builds obtained elsewhere except https://github.com/termux/termux-app. Everyone is able to use it to forge a malicious Termux update installable over the GitHub build. Think twice about installing Termux builds distributed via Telegram or other social media. If your device get caught by malware, we will not be able to help you.
 
 The [test key](https://github.com/termux/termux-app/blob/master/app/testkey_untrusted.jks) shall not be used to impersonate @termux and can't be used for this anyway. This key is not trusted by us and it is quite easy to detect its use in user generated content.
