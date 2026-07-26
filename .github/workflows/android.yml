@@ -89,27 +89,17 @@ jobs:
           draft: false
           prerelease: false
 
-      - name: Prepare GitHub Pages deployment
-        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
-        run: |
-          # Create a temp directory for gh-pages content
-          mkdir -p gh-pages-content
-          # Copy APKs
-          cp app/build/outputs/apk/debug/*.apk gh-pages-content/
-          # Copy index.html
-          cp index.html gh-pages-content/
-          # Create a .nojekyll file to prevent Jekyll processing
-          touch gh-pages-content/.nojekyll
-
-      - name: Deploy to GitHub Pages
+      - name: Deploy index.html to GitHub Pages
         if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: gh-pages-content
+          publish_dir: .
           publish_branch: gh-pages
           keep_files: true
           force_orphan: true
+          include_assets: "index.html"
+          cname: ""
 
   lint:
     name: Lint & Check

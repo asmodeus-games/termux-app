@@ -606,6 +606,7 @@ public final class TermuxActivity extends AppCompatActivity implements ServiceCo
         } else {
             finishActivityIfNotFinishing();
         }
+        super.onBackPressed();
     }
 
     public void finishActivityIfNotFinishing() {
